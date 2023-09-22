@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'musics/index'
+  root to: "items#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
