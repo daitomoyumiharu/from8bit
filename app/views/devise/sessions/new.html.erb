@@ -1,0 +1,39 @@
+
+
+<%= stylesheet_link_tag 'login_styles' %>
+<div class="container-center">
+  <%= render "shared/header" %>
+  
+  <%= form_with model: @user, url: user_session_path, class: "registration-main", local: true do |f| %>
+    <div class='card text-center'>
+      <div class='form-header'>
+        <h1 class='--bs-primary'>
+          会員情報入力
+        </h1>
+      </div>
+      <div class='login-flash-message'>
+        <%= flash[:notice] %>
+        <%= flash[:alert] %>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text" for="email">メールアドレス</label>
+        </div>
+        <%= f.email_field :email, class: "input-field", id: "email", placeholder: "PC・携帯どちらでも可", autofocus: true %>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text" for="password">パスワード</label>
+        </div>
+        <%= f.password_field :password, class: "input-field", id: "password" %>
+      </div>
+      <div class='login-btn'>
+        <%= f.submit "ログイン", class: "login-red-btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= render "devise/shared/links" %>
+<br>
+<%= render "shared/footer" %>
