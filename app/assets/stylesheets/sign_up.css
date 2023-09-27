@@ -1,0 +1,103 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  height: 100vh;
+  margin: 0;
+  background-image: url('game_01.jpg');
+}
+
+.form-wrap {
+  background: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+  margin-bottom: 20px;
+}
+
+.form-header-text {
+  font-size: 1.8em;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-text-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-text {
+  font-weight: bold;
+  color: #333;
+}
+
+.indispensable {
+  background-color: #ff4d4d;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8em;
+}
+
+.input-default {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.input-name-wrap {
+  display: flex;
+  gap: 10px; /* 2つの入力フィールドの間にスペースを追加 */
+}
+
+.input-name {
+  flex: 1; /* 入力フィールドが均等に広がるように */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.info-text {
+  font-size: 0.9em;
+  color: #888;
+  margin-top: 5px;
+}
+
+.register-btn {
+  text-align: center;
+}
+
+.register-red-btn {
+  background-color: #ff4d4d;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.register-red-btn:hover {
+  background-color: #cc3c3c;
+}
+
+.register-info {
+  margin-top: 20px;
+  font-size: 0.9em;
+  text-align: center;
+  color: #888;
+}
