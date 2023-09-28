@@ -109,7 +109,7 @@ $ rails s
 | year_id          | integer    | null: false                    |
 | genre_id         | integer    | null: false                    |
 | target           | string     |                                |
-| genre_id         | integer    | null: false                    |
+
 
 
 #### Association
