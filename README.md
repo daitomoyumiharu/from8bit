@@ -102,13 +102,13 @@ $ rails s
 | ---------------- | ---------- | ------------------------------ |
 | id               | integer    | primary key                    |
 | user_id          | references | null: false, foreign_key: true |
-| game_name        | integer    | null: false, index: true       |
+| game_name        | string     | null: false, index: true       |
 | title            | string     | null: false                    |
 | description      | text       | null: false                    |
 | music_file       | string     | null: false                    |
 | year_id          | integer    | null: false                    |
 | genre_id         | integer    | null: false                    |
-| target           | string     |                                |
+| target           | text       |                                |
 
 
 
