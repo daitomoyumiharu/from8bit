@@ -102,7 +102,7 @@ $ rails s
 | ---------------- | ---------- | ------------------------------ |
 | id               | integer    | primary key                    |
 | user_id          | references | null: false, foreign_key: true |
-| game_name        | string     | null: false, index: true       |
+| game_name        | string     | null: false,                   |
 | title            | string     | null: false                    |
 | description      | text       | null: false                    |
 | music_file       | string     | null: false                    |
