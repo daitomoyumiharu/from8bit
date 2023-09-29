@@ -1,20 +1,13 @@
 class Year < ActiveHash::Base
   self.data = [
     { id: 1, name: '---' },
-    { id: 2, name: 'アクション(action)' },
-    { id: 3, name: 'RPG' },
-    { id: 4, name: 'シミュレーション(simulation)' },
-    { id: 5, name: 'スポーツ(sports)' },
-    { id: 6, name: '戦略ゲーム(strategy)' },
-    { id: 7, name: 'レーシング(racing)' },
-    { id: 8, name: 'ホラー(horror)' },
-    { id: 9, name: 'パズル(puzzle)' },
-    { id: 10, name: 'ファイティング(fighting)' },
-    { id: 11, name: 'MMO(Massively Multiplayer Online)' },
-    { id: 12, name: 'デジタルトレーディングカード(digital_trading_card)' },
-    { id: 13, name: 'バトルロワイヤル(battle_royale)' },
-    { id: 14, name: '音ゲー(music_game)' },
-    { id: 15, name: '不明(unknown)' },
+    { id: 2, name: '1970年代' },
+    { id: 3, name: '1980年代' },
+    { id: 4, name: '1990年代' },
+    { id: 5, name: '2000年代' },
+    { id: 6, name: '2010年代' },
+    { id: 7, name: '2020年代' },
+    { id: 8, name: '不明(unknown)' },
  
   ]
 
