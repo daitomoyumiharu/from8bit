@@ -86,8 +86,7 @@ $ rails s
 
 #### Association
 
-- has_many :items
-- has_many :orders
+- has_many :musics
 - has_many :likes
 - has_many :follows_as_follower, class_name: 'Follow', foreign_key: 'follower_id'
 - has_many :follows_as_following, class_name: 'Follow', foreign_key: 'following_id'
