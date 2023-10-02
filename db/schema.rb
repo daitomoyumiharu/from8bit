@@ -44,7 +44,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_102824) do
     t.string "game_name", null: false
     t.string "title", null: false
     t.text "description", null: false
-    t.string "music_file", null: false
     t.integer "year_id", null: false
     t.integer "genre_id", null: false
     t.text "target", null: false

@@ -4,8 +4,13 @@
 
 <div class="container music-container mt-4">
   <h1 class="music-title text-center mb-4">♪ゲーム音楽投稿</h1>
+  
 
-  <%= form_with(model: @music, local: true, class: 'shadow p-4 rounded bg-white') do |f| %>
+  <%= form_with(model: @music, data: { turbo: false }, local: true, class: 'shadow p-4 rounded bg-white') do |f| %>
+    
+    <%# インスタンスを渡して、エラー発生時にメッセージを表示。%>
+    <%= render partial: "shared/error_messages", locals: { model: @music } %>
+
     <div class="input-field mb-3">
       <%= f.label :image, "画像投稿" %>
       <%= f.file_field :image, class: 'form-control' %>
@@ -17,7 +22,7 @@
     </div>
 
     <div class="input-field mb-3">
-      <%= f.label :title, "ゲームタイトル" %>
+      <%= f.label :title, "曲のタイトル" %>
       <%= f.text_field :title, class: 'form-control' %>
     </div>
 

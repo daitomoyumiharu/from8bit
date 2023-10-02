@@ -11,7 +11,6 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
 
-    
 
     
 
@@ -196,38 +195,74 @@
 
     <!-- START THE FEATURETTES -->
 
+  <hr class="featurette-divider">
+
+  <div class="container music-container mt-4">
+
+  <% @musics.each_with_index do |music, index| %>
+
     <hr class="featurette-divider">
 
-    <div class="container music-container mt-4">
+    <div class="row featurette">
+      <% if index.even? %>
+        <div class="col-md-7">
+          <h2  class="fw-semibold"><%= music.game_name %> - <%= music.title %></h2>
+          <p class="text-bg-light p-3"><%= music.description %></p>
 
-      <% @musics.each_with_index do |music, index| %>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-          <% if index.even? %>
-            <div class="col-md-7">
-              <h2 class="featurette-heading fw-normal lh-1"><%= music.game_name %> - <%= music.title %></h2>
-              <p class="lead"><%= music.description %></p>
-            </div>
-            <div class="col-md-5">
-              <%= image_tag music.image.variant(resize: '500x500'), class: "featurette-image img-fluid mx-auto" if music.image.attached? %>
-            </div>
-          <% else %>
-            <div class="col-md-7 order-md-2">
-              <h2 class="featurette-heading fw-normal lh-1"><%= music.game_name %> - <%= music.title %></h2>
-              <p class="lead"><%= music.description %></p>
-            </div>
-            <div class="col-md-5 order-md-1">
-              <%= image_tag music.image.variant(resize: '500x500'), class: "featurette-image img-fluid mx-auto" if music.image.attached? %>
-            </div>
-          <% end %>
+          <!-- Music Details based on validation columns -->
+          <ul class="Medium weight text.">
+            <li><strong>User:</strong> <%= music.user.nickname if music.user %></li>
+            <li><strong>年代（Year）:</strong> <%= music.year.name if music.year %></li>
+            <li><strong>ジャンル（Genre）:</strong> <%= music.genre.name if music.genre %></li>
+            <li><strong>対象（Target）:</strong> <%= music.target if music.target %></li>
+            <li><strong>Music File:</strong> 
+              <% if music.music_file.attached? %>
+                 <button class="play-btn" data-audio-id="audio_<%= index %>">Play</button>
+                <audio id="audio_<%= index %>" controls class="w-100">
+                  <%= audio_tag rails_blob_path(music.music_file, disposition: "attachment") %>
+                </audio>
+              <% else %>
+                Not Attached
+              <% end %>
+            </li>
+          </ul>
         </div>
+        <div class="col-md-5">
+          <%= image_tag music.image.variant(resize: '500x500'), class: "featurette-image img-fluid mx-auto" if music.image.attached? %>
+        </div>
+      <% else %>
+        <div class="col-md-7 order-md-2">
+          <h2 class="fw-semibold"><%= music.game_name %> - <%= music.title %></h2>
+          <p class="text-bg-light p-3"><%= music.description %></p>
 
+          <!-- Music Details based on validation columns -->
+          <ul class="Medium weight text.">
+            <li><strong class="">User:</strong> <%= music.user.nickname if music.user %></li>
+            <li><strong class="">年代（Year）:</strong> <%= music.year.name if music.year %></li>
+            <li><strong>ジャンル（Genre）:</strong> <%= music.genre.name if music.genre %></li>
+            <li><strong>対象（Target）:</strong> <%= music.target if music.target %></li>
+            <li><strong>Music File:</strong> 
+              <% if music.music_file.attached? %>
+                <button class="play-btn" data-audio-id="audio_<%= index %>">Play</button>
+                <audio id="audio_<%= index %>" controls class="w-100">
+                  <%= audio_tag rails_blob_path(music.music_file, disposition: "attachment") %>
+                </audio>
+              <% else %>
+                Not Attached
+              <% end %>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-5 order-md-1">
+          <%= image_tag music.image.variant(resize: '500x500'), class: "featurette-image img-fluid mx-auto" if music.image.attached? %>
+        </div>
       <% end %>
     </div>
 
-    <hr class="featurette-divider">
+  <% end %>
+</div>
+
+<hr class="featurette-divider">
 
     <!-- /END THE FEATURETTES -->
 
