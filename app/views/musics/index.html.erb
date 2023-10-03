@@ -218,9 +218,10 @@
             <li><strong>Music File:</strong> 
               <% if music.music_file.attached? %>
                  <button class="play-btn" data-audio-id="audio_<%= index %>">Play</button>
-                <audio id="audio_<%= index %>" controls class="w-100">
-                  <%= audio_tag rails_blob_path(music.music_file, disposition: "attachment") %>
+                <audio id="audio_<%= index %>" controls class="w-100" preload="auto">
+                   <%= audio_tag rails_blob_path(music.music_file) %>
                 </audio>
+
               <% else %>
                 Not Attached
               <% end %>
@@ -244,9 +245,10 @@
             <li><strong>Music File:</strong> 
               <% if music.music_file.attached? %>
                 <button class="play-btn" data-audio-id="audio_<%= index %>">Play</button>
-                <audio id="audio_<%= index %>" controls class="w-100">
-                  <%= audio_tag rails_blob_path(music.music_file, disposition: "attachment") %>
+                <audio id="audio_<%= index %>" controls class="w-100" preload="auto">
+                   <%= audio_tag rails_blob_path(music.music_file) %>
                 </audio>
+
               <% else %>
                 Not Attached
               <% end %>
