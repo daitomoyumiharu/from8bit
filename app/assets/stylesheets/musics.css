@@ -1,0 +1,78 @@
+/* 全体の背景画像設定 */
+html, body {
+  height: 100%;
+}
+
+
+body {
+  background-image: url('game_floor.jpg');
+  font-family: 'Arial', sans-serif;
+  height: 100vh;
+  margin: 0;
+}
+
+.music-container {
+  margin: 100px auto;
+  background-color: rgba(172, 170, 170, 0.4);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.music-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.music-container .form-group {
+  margin-bottom: 20px;
+}
+
+.music-container .button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.music-container .button:hover {
+  background-color: #2980b9;
+}
+
+.music-container .image-preview {
+  display: block;
+  width: 100%;
+  height: 200px;
+  border: 1px dashed #ccc;
+  margin-bottom: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.music-container label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.music-container .music-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.0);
+  margin-bottom: 2rem;
+}
+
+.music-container .input-field {
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.0);
+  margin-bottom: 2rem;
+}

@@ -1,0 +1,58 @@
+<%= stylesheet_link_tag 'musics' %>
+<%= render "shared/header" %>
+<%= render "shared/second_header" %>
+
+<div class="container music-container mt-4">
+  <h1 class="music-title text-center mb-4">♪ゲーム音楽投稿</h1>
+  
+
+  <%= form_with(model: @music, data: { turbo: false }, local: true, class: 'shadow p-4 rounded bg-white') do |f| %>
+    
+    <%# インスタンスを渡して、エラー発生時にメッセージを表示。%>
+    <%= render partial: "shared/error_messages", locals: { model: @music } %>
+
+    <div class="input-field mb-3">
+      <%= f.label :image, "画像投稿" %>
+      <%= f.file_field :image, class: 'form-control' %>
+    </div>
+
+    <div class="input-field mb-3">
+      <%= f.label :game_name, "ゲーム名" %>
+      <%= f.text_field :game_name, class: 'form-control' %>
+    </div>
+
+    <div class="input-field mb-3">
+      <%= f.label :title, "曲のタイトル" %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="input-field mb-3">
+      <%= f.label :description, "説明" %>
+      <%= f.text_area :description, class: 'form-control', rows: '5', placeholder: '※音楽についての説明や外部ファイルの場合URLを記入して下さい' %>
+    </div>
+
+    <div class="input-field mb-3">
+      <%= f.label :music_file, "音楽ファイル" %>
+      <%= f.file_field :music_file, class: 'form-control' %>
+    </div>
+
+    <div class="input-field mb-3">
+      <%= f.label :year_id, "年代" %>
+      <%= f.select :year_id, Year.data.map { |y| [y[:name], y[:id]] }, {}, class: 'form-control' %>
+    </div>
+
+    <div class="input-field mb-3">
+      <%= f.label :genre_id, "ジャンル" %>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: "---"}, class: 'form-control' %>
+    </div>
+
+    <div class="input-field mb-3">
+      <%= f.label :target, "対象" %>
+      <%= f.text_area :target, class: 'form-control', rows: '5', placeholder: '※任意(どんな状況の人に聞いて欲しいか、是非教えて下さい！)' %>
+    </div>
+
+    <%= f.submit "投稿する", class: "submit-btn btn btn-primary btn-block mt-3" %>
+  <% end %>
+</div>
+
+<%= render "shared/footer" %>
