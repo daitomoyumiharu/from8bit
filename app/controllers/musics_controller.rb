@@ -13,9 +13,7 @@ class MusicsController < ApplicationController
   end
 
   def create
-    binding.pry
     @music = Music.new(music_params.merge(user_id: current_user.id))
-
     if @music.save
       redirect_to root_path
     else

@@ -2,69 +2,79 @@ require 'rails_helper'
 
 RSpec.describe Music, type: :model do
   before do
+    puts Rails.root.join('spec', 'fixtures', 'test_music.mp3').to_s
     @music = FactoryBot.build(:music)
   end
 
   describe 'バリデーション' do
-    context '全ての入力事項が正しく存在する場合' do
-      it '投稿できること' do
+    context '出品登録ができるとき' do
+      it '全ての入力事項が、存在すれば登録できる' do
+        expect(@music).to be_valid
+      end
+
+      it 'ジャンルが「---」以外であれば登録できる' do
+        @music.genre_id = 2
+        expect(@music).to be_valid
+      end
+
+      it '年代が「---」以外であれば登録できる' do
+        @music.year_id = 2
         expect(@music).to be_valid
       end
     end
 
-    context 'ユーザーが存在しない場合' do
-      it '投稿できないこと' do
+    context '出品ができないとき' do
+      it 'ユーザーが存在しない場合、投稿できないこと' do
         @music.user = nil
-        expect(@music).not_to be_valid
+        @music.valid?
+        expect(@music.errors.full_messages).to include('User ユーザーを選択してください')
       end
-    end
 
-    context '画像が存在しない場合' do
-      it '投稿できないこと' do
+      it '画像が存在しない場合、投稿できないこと' do
         @music.image = nil
-        expect(@music).not_to be_valid
+        @music.valid?
+        expect(@music.errors.full_messages).to include('Image 画像を選択してください')
       end
-    end
 
-    context 'タイトルが存在しない場合' do
-      it '投稿できないこと' do
+      it 'タイトルが存在しない場合、投稿できないこと' do
         @music.title = nil
-        expect(@music).not_to be_valid
+        @music.valid?
+        expect(@music.errors.full_messages).to include('Title タイトルを入力してください')
       end
-    end
 
-    context '説明が存在しない場合' do
-      it '投稿できないこと' do
+      it '説明が存在しない場合、投稿できないこと' do
         @music.description = nil
-        expect(@music).not_to be_valid
+        @music.valid?
+        expect(@music.errors.full_messages).to include('Description 説明を入力してください')
       end
-    end
 
-    context '音楽ファイルが存在しない場合' do
-      it '投稿できないこと' do
+      it '音楽ファイルが存在しない場合、投稿できないこと' do
         @music.music_file = nil
-        expect(@music).not_to be_valid
+        @music.valid?
+        expect(@music.errors.full_messages).to include('Music file 音楽ファイルを選択してください')
       end
-    end
 
-    context '年代が1の場合' do
-      it '投稿できないこと' do
+      it '年代が1の場合、投稿できないこと' do
         @music.year_id = 1
-        expect(@music).not_to be_valid
+        @music.valid?
+        expect(@music.errors.full_messages).to include('Year 年代を選択してください')
       end
-    end
 
-    context 'ジャンルが1の場合' do
-      it '投稿できないこと' do
+      it 'ジャンルが1の場合、投稿できないこと' do
         @music.genre_id = 1
-        expect(@music).not_to be_valid
+        @music.valid?
+        expect(@music.errors.full_messages).to include('Genre ジャンルを選択してください')
       end
-    end
 
-    context '音楽ファイルが許可されていない形式の場合' do
-      it '投稿できないこと' do
-        @music.music_file.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'test.img')), filename: 'test.img', content_type: 'text/plain')
-        expect(@music).not_to be_valid
+      it '音楽ファイルが許可されていない形式の場合、投稿できないこと' do
+        @music.music_file.attach(
+          io: File.open(Rails.root.join('spec', 'fixtures', 'test_image.jpg')),
+          filename: 'test_image.jpg',
+          content_type: 'image/jpeg'
+        )
+        puts @music.music_file.inspect
+        @music.valid?
+        expect(@music.errors.full_messages).to include('Music file はMP3またはWAVファイルである必要があります')
       end
     end
   end

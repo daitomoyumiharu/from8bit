@@ -219,7 +219,7 @@
               <% if music.music_file.attached? %>
                  <button class="play-btn" data-audio-id="audio_<%= index %>">Play</button>
                 <audio id="audio_<%= index %>" controls class="w-100" preload="auto">
-                   <%= audio_tag rails_blob_path(music.music_file) %>
+                  <%= audio_tag rails_blob_path(music.music_file) %>
                 </audio>
 
               <% else %>
@@ -246,7 +246,7 @@
               <% if music.music_file.attached? %>
                 <button class="play-btn" data-audio-id="audio_<%= index %>">Play</button>
                 <audio id="audio_<%= index %>" controls class="w-100" preload="auto">
-                   <%= audio_tag rails_blob_path(music.music_file) %>
+                  <%= audio_tag rails_blob_path(music.music_file) %>
                 </audio>
 
               <% else %>
