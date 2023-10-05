@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Music, type: :model do
   before do
-    puts Rails.root.join('spec', 'fixtures', 'test_music.mp3').to_s
     @music = FactoryBot.build(:music)
   end
 
