@@ -217,11 +217,9 @@
             <li><strong>対象（Target）:</strong> <%= music.target if music.target %></li>
             <li><strong>Music File:</strong> 
               <% if music.music_file.attached? %>
-                <button class="play-btn" data-audio-id="audio_<%= index %>">Play</button>
-                <audio id="audio_<%= index %>" controls class="w-100" preload="auto">
+                <div >
                   <%= audio_tag rails_blob_path(music.music_file), controls: true %>
-                </audio>
-
+                </div>
               <% else %>
                 Not Attached
               <% end %>
@@ -244,11 +242,9 @@
             <li><strong>対象（Target）:</strong> <%= music.target if music.target %></li>
             <li><strong>Music File:</strong> 
               <% if music.music_file.attached? %>
-                <button class="play-btn" data-audio-id="audio_<%= index %>">Play</button>
-                <audio id="audio_<%= index %>" controls class="w-100" preload="auto">
+                <div >
                   <%= audio_tag rails_blob_path(music.music_file), controls: true %>
-                </audio>
-
+                </div>
               <% else %>
                 Not Attached
               <% end %>
