@@ -207,7 +207,7 @@
       <% if index.even? %>
         <div class="col-md-7">
           <h2  class="fw-semibold"><%= music.game_name %> - <%= music.title %></h2>
-          <p class="text-bg-light p-3"><%= music.description %></p>
+          <p class="text-bg-light p-3"><%= music.description_with_links %></p> <!-- description_with_links を呼び出す -->
 
           <!-- Music Details based on validation columns -->
           <ul class="Medium weight text.">
@@ -232,8 +232,8 @@
       <% else %>
         <div class="col-md-7 order-md-2">
           <h2 class="fw-semibold"><%= music.game_name %> - <%= music.title %></h2>
-          <p class="text-bg-light p-3"><%= music.description %></p>
-
+          <p class="text-bg-light p-3"><%= music.description_with_links %></p> <!-- description_with_links を呼び出す -->
+          
           <!-- Music Details based on validation columns -->
           <ul class="Medium weight text.">
             <li><strong class="">User:</strong> <%= music.user.nickname if music.user %></li>

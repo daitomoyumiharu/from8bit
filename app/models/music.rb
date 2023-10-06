@@ -22,6 +22,11 @@ class Music < ApplicationRecord
 
   validate :music_file_content_type, if: -> { music_file.attached? }
 
+  def description_with_links
+    # description フィールド内のURLをリンクに変換するロジックを実装
+    description.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe
+  end
+
   private
 
   def music_file_content_type
