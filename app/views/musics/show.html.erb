@@ -1,0 +1,64 @@
+<%= render "shared/header" %>
+<%= render "shared/second_header" %>
+<%= stylesheet_link_tag 'show' %>
+
+<html lang="en">
+  <head>
+      <!-- ヘッダー部分のコード -->
+  </head>
+  <body>
+      <div class="container">
+          <div class="music-details">
+            <% if @music.image.attached? %>
+               <div class="music-image">
+                 <%= link_to(image_tag(@music.image.variant(resize: '500x500'), class: "featurette-image img-fluid mx-auto"), music_path(@music)) %>
+              </div>
+            <% end %>
+            <div class="music-audio">
+              <% if @music.music_file.attached? %>
+                <div >
+                  <%= audio_tag rails_blob_path(@music.music_file), controls: true %>
+                </div>
+              <% else %>
+                Not Attached
+              <% end %>
+          <div class="music-info">
+            <p><strong>User:</strong> <%= link_to @music.user.nickname, music_path(@music.user) if @music.user %></p>
+            <p><strong>年代（Year）:</strong> <%= @music.year.name if @music.year %></p>
+            <p><strong>ジャンル（Genre）:</strong> <%= @music.genre.name if @music.genre %></p>
+            <p><strong>対象（Target）:</strong> <%= @music.target if @music.target %></p>
+          </div>
+          <div class="music-description">
+            <p class="text-bg-light p-3"><%= @music.description_with_links %></p> <!-- description_with_links を呼び出す -->
+          </div>
+
+          <!-- コメント欄 -->
+          <div class="comments">
+              <h3>コメント</h3>
+              <% if user_signed_in? %>
+                <!-- ログイン状態の場合、コメントフォームを表示 -->
+                <%= form_with(model: [@music, @comment], local: true) do |f| %>
+                  <%= f.text_area :text, placeholder: "コメントを入力してください" %>
+                  <%= f.submit "コメントする" %>
+                <% end %>
+              <% else %>
+                <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+              <% end %>
+
+              <!-- コメント一覧 -->
+              <div class="comments">
+                <h4>コメント一覧</h4>
+                <% @comments.each do |comment| %>
+                  <p>
+                    <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>:</strong>
+                    <%= comment.text %>
+                  </p>
+                <% end %>
+              </div>
+
+          </div>
+
+  </body>
+</html>
+
+<%= render "shared/footer" %>

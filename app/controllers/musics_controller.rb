@@ -5,7 +5,7 @@ class MusicsController < ApplicationController
 
   
   def index
-     @musics = Music.includes(:user).order("created_at DESC")
+    @musics = Music.includes(:user).order("created_at DESC")
   end
 
   def new
@@ -14,6 +14,7 @@ class MusicsController < ApplicationController
 
   def create
     @music = Music.new(music_params.merge(user_id: current_user.id))
+
     if @music.save
       redirect_to root_path
     else
@@ -21,6 +22,12 @@ class MusicsController < ApplicationController
       puts @music.errors.full_messages 
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @music = Music.find(params[:id])
+    @comment = Comment.new
+    @comments = @music.comments.includes(:user).order(created_at: :desc)
   end
 
   def music_params

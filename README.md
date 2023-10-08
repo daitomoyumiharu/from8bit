@@ -92,6 +92,7 @@ $ rails s
 - has_many :follows_as_following, class_name: 'Follow', foreign_key: 'following_id'
 - has_many :followers, through: :follows_as_following, source: :follower
 - has_many :followings, through: :follows_as_follower, source: :following 
+- has_many :comments
 
 <br>
 
