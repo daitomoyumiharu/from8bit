@@ -207,11 +207,11 @@
       <% if index.even? %>
         <div class="col-md-7">
           <h2  class="fw-semibold"><%= music.game_name %> - <%= music.title %></h2>
-          <p class="text-bg-light p-3"><%= music.description %></p>
+          <p class="text-bg-light p-3"><%= music.description_with_links %></p> <!-- description_with_links を呼び出す -->
 
           <!-- Music Details based on validation columns -->
           <ul class="Medium weight text.">
-            <li><strong>User:</strong> <%= music.user.nickname if music.user %></li>
+            <li><strong>User:</strong> <%= link_to music.user.nickname, music_path(music.user) if music.user %></li>
             <li><strong>年代（Year）:</strong> <%= music.year.name if music.year %></li>
             <li><strong>ジャンル（Genre）:</strong> <%= music.genre.name if music.genre %></li>
             <li><strong>対象（Target）:</strong> <%= music.target if music.target %></li>
@@ -227,16 +227,16 @@
           </ul>
         </div>
         <div class="col-md-5">
-          <%= image_tag music.image.variant(resize: '500x500'), class: "featurette-image img-fluid mx-auto" if music.image.attached? %>
+           <%= link_to(image_tag(music.image.variant(resize: '500x500'), class: "featurette-image img-fluid mx-auto"), music_path(music)) if music.image.attached? %>
         </div>
       <% else %>
         <div class="col-md-7 order-md-2">
           <h2 class="fw-semibold"><%= music.game_name %> - <%= music.title %></h2>
-          <p class="text-bg-light p-3"><%= music.description %></p>
+          <p class="text-bg-light p-3"><%= music.description_with_links %></p> <!-- description_with_links を呼び出す -->
 
           <!-- Music Details based on validation columns -->
           <ul class="Medium weight text.">
-            <li><strong class="">User:</strong> <%= music.user.nickname if music.user %></li>
+            <li><strong>User:</strong> <%= link_to music.user.nickname, music_path(music.user) if music.user %></li>
             <li><strong class="">年代（Year）:</strong> <%= music.year.name if music.year %></li>
             <li><strong>ジャンル（Genre）:</strong> <%= music.genre.name if music.genre %></li>
             <li><strong>対象（Target）:</strong> <%= music.target if music.target %></li>
@@ -252,7 +252,7 @@
           </ul>
         </div>
         <div class="col-md-5 order-md-1">
-          <%= image_tag music.image.variant(resize: '500x500'), class: "featurette-image img-fluid mx-auto" if music.image.attached? %>
+           <%= link_to(image_tag(music.image.variant(resize: '500x500'), class: "featurette-image img-fluid mx-auto"), music_path(music)) if music.image.attached? %>
         </div>
       <% end %>
     </div>

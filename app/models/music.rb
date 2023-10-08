@@ -4,7 +4,7 @@ class Music < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_one_attached :music_file
-
+  has_many :comments
   belongs_to :genre
   belongs_to :year
 
@@ -21,6 +21,11 @@ class Music < ApplicationRecord
   validates :genre_id, numericality: { other_than: 1, message: 'ジャンルを選択してください' }
 
   validate :music_file_content_type, if: -> { music_file.attached? }
+
+  def description_with_links
+    # description フィールド内のURLをリンクに変換するロジックを実装
+    description.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe
+  end
 
   private
 
