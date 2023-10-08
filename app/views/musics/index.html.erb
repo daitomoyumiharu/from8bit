@@ -151,115 +151,116 @@
 <%= render "shared/header" %>
 <%= render "shared/second_header" %>
 
-  <main>
-    <div class="container marketing">
+<main>
 
-      <div class="text-center">
-        <br>
-        <div class="container">
-        </div>
-        <h2>あなたが好きなゲーム音楽を共有し、新しいお気に入りに出会える場所</h2>
-      【Share the game music you adore; discover tunes you'll fall in love with.】
-      </div>
+ 
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <div class="text-center">
       <br>
+      <div class="container">
+       </div>
+      <h2>あなたが好きなゲーム音楽を共有し、新しいお気に入りに出会える場所</h2>
+     【Share the game music you adore; discover tunes you'll fall in love with.】
+    </div>
+    <br>
 
-      <div class="row">
-        <div class="col-lg-4">
-          <%= image_tag("game1980.jpg", class:"img-thumbnail") %>
-          <h2 class="fw-normal">年代別ゲーム音楽</h2>
-          <p>1980年代〜2020年代までの音楽を年代毎に検索できます。懐かしい音楽や最新のゲーム音楽を探してみましょう。</p>
-          <p><a class="btn btn-outline-danger" href="#">listen to music &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <%= image_tag("game_shop.png", class:"img-thumbnail") %>
-          <h2 class="fw-normal">ジャンル別ゲーム音楽</h2>
-          <p>アクションやRPGなどジャンル毎で探したい方はこちらから検索できます。</p>
-          <p><a class="btn btn-outline-info" href="#">listen to music &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <%= image_tag("geisha.png", class:"img-thumbnail") %>
-          <h2 class="fw-normal" >オリジナル楽曲</h2>
-          <p>皆さんが投稿した、〇〇風音楽やお気に入りのゲームへ向けたオリジナル楽曲を見つけてみましょう。</p>
-          <p><a class="btn btn-outline-secondary" href="#">listen to music &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
+    <div class="row">
+      <div class="col-lg-4">
+        <%= image_tag("game1980.jpg", class:"img-thumbnail") %>
+        <h2 class="fw-normal">年代別ゲーム音楽</h2>
+        <p>1980年代〜2020年代までの音楽を年代毎に検索できます。懐かしい音楽や最新のゲーム音楽を探してみましょう。</p>
+        <p><a class="btn btn-outline-danger" href="#">listen to music &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <%= image_tag("game_shop.png", class:"img-thumbnail") %>
+        <h2 class="fw-normal">ジャンル別ゲーム音楽</h2>
+        <p>アクションやRPGなどジャンル毎で探したい方はこちらから検索できます。</p>
+        <p><a class="btn btn-outline-info" href="#">listen to music &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <%= image_tag("geisha.png", class:"img-thumbnail") %>
+        <h2 class="fw-normal" >オリジナル楽曲</h2>
+        <p>皆さんが投稿した、〇〇風音楽やお気に入りのゲームへ向けたオリジナル楽曲を見つけてみましょう。</p>
+        <p><a class="btn btn-outline-secondary" href="#">listen to music &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
 
 
-      <!-- START THE FEATURETTES -->
-
-    <hr class="featurette-divider">
-
-    <div class="container music-container mt-4">
-
-    <% @musics.each_with_index do |music, index| %>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <% if index.even? %>
-          <div class="col-md-7">
-            <h2  class="fw-semibold"><%= music.game_name %> - <%= music.title %></h2>
-            <p class="text-bg-light p-3"><%= music.description_with_links %></p> <!-- description_with_links を呼び出す -->
-
-            <ul class="Medium weight text.">
-              <li><strong>User:</strong> <%= link_to music.user.nickname, music_path(music.user) if music.user %></li>
-              <li><strong>年代（Year）:</strong> <%= music.year.name if music.year %></li>
-              <li><strong>ジャンル（Genre）:</strong> <%= music.genre.name if music.genre %></li>
-              <li><strong>対象（Target）:</strong> <%= music.target if music.target %></li>
-              <li><strong>Music File:</strong> 
-                <% if music.music_file.attached? %>
-                  <div >
-                    <%= audio_tag rails_blob_path(music.music_file), controls: true %>
-                  </div>
-                <% else %>
-                  Not Attached
-                <% end %>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-5">
-            <%= link_to(image_tag(music.image.variant(resize: '500x500'), class: "featurette-image img-fluid mx-auto"), music_path(music)) if music.image.attached? %>
-          </div>
-        <% else %>
-          <div class="col-md-7 order-md-2">
-            <h2 class="fw-semibold"><%= music.game_name %> - <%= music.title %></h2>
-            <p class="text-bg-light p-3"><%= music.description_with_links %></p> <!-- description_with_links を呼び出す -->
-            <!-- Music Details based on validation columns -->
-            <ul class="Medium weight text.">
-              <li><strong>User:</strong> <%= link_to music.user.nickname, music_path(music.user) if music.user %></li>
-              <li><strong class="">年代（Year）:</strong> <%= music.year.name if music.year %></li>
-              <li><strong>ジャンル（Genre）:</strong> <%= music.genre.name if music.genre %></li>
-              <li><strong>対象（Target）:</strong> <%= music.target if music.target %></li>
-              <li><strong>Music File:</strong> 
-                <% if music.music_file.attached? %>
-                  <div >
-                    <%= audio_tag rails_blob_path(music.music_file), controls: true %>
-                  </div>
-                <% else %>
-                  Not Attached
-                <% end %>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-5 order-md-1">
-            <%= link_to(image_tag(music.image.variant(resize: '500x500'), class: "featurette-image img-fluid mx-auto"), music_path(music)) if music.image.attached? %>
-          </div>
-        <% end %>
-      </div>
-
-    <% end %>
-  </div>
+    <!-- START THE FEATURETTES -->
 
   <hr class="featurette-divider">
 
-      <!-- /END THE FEATURETTES -->
+  <div class="container music-container mt-4">
 
-    </div><!-- /.container -->
+  <% @musics.each_with_index do |music, index| %>
 
-  <%= render "shared/footer" %>
+    <hr class="featurette-divider">
 
-  </main>
+    <div class="row featurette">
+      <% if index.even? %>
+        <div class="col-md-7">
+          <h2  class="fw-semibold"><%= music.game_name %> - <%= music.title %></h2>
+          <p class="text-bg-light p-3"><%= music.description_with_links %></p> <!-- description_with_links を呼び出す -->
 
+          <ul class="Medium weight text.">
+            <li><strong>User:</strong> <%= link_to music.user.nickname, music_path(music.user) if music.user %></li>
+            <li><strong>年代（Year）:</strong> <%= music.year.name if music.year %></li>
+            <li><strong>ジャンル（Genre）:</strong> <%= music.genre.name if music.genre %></li>
+            <li><strong>対象（Target）:</strong> <%= music.target if music.target %></li>
+            <li><strong>Music File:</strong> 
+              <% if music.music_file.attached? %>
+                <div >
+                  <%= audio_tag rails_blob_path(music.music_file), controls: true %>
+                </div>
+              <% else %>
+                Not Attached
+              <% end %>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-5">
+           <%= link_to(image_tag(music.image.variant(resize: '500x500'), class: "featurette-image img-fluid mx-auto"), music_path(music)) if music.image.attached? %>
+        </div>
+      <% else %>
+        <div class="col-md-7 order-md-2">
+          <h2 class="fw-semibold"><%= music.game_name %> - <%= music.title %></h2>
+          <p class="text-bg-light p-3"><%= music.description_with_links %></p> <!-- description_with_links を呼び出す -->
+          <ul class="Medium weight text.">
+            <li><strong>User:</strong> <%= link_to music.user.nickname, music_path(music.user) if music.user %></li>
+            <li><strong class="">年代（Year）:</strong> <%= music.year.name if music.year %></li>
+            <li><strong>ジャンル（Genre）:</strong> <%= music.genre.name if music.genre %></li>
+            <li><strong>対象（Target）:</strong> <%= music.target if music.target %></li>
+            <li><strong>Music File:</strong> 
+              <% if music.music_file.attached? %>
+                <div >
+                  <%= audio_tag rails_blob_path(music.music_file), controls: true %>
+                </div>
+              <% else %>
+                Not Attached
+              <% end %>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-5 order-md-1">
+           <%= link_to(image_tag(music.image.variant(resize: '500x500'), class: "featurette-image img-fluid mx-auto"), music_path(music)) if music.image.attached? %>
+        </div>
+      <% end %>
+    </div>
 
-  </body>
-</html>
+  <% end %>
+</div>
+
+<hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+<%= render "shared/footer" %>
