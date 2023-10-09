@@ -1,7 +1,7 @@
 class MusicsController < ApplicationController
   #ログアウト状態のユーザーが投稿ページへ遷移を試みると、ログインページへリダイレクトするよう設定
   before_action :authenticate_user!, except: [:index]
-  before_action :set_music, only: [:show, :edit]
+  before_action :set_music, only: [:show, :edit, :update]
 
 
   
@@ -37,13 +37,21 @@ class MusicsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def update
+    if @music.update(music_params)
+      redirect_to music_path(@music)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
   
 
   def music_params
     params.require(:music).permit(:game_name, :title, :description, :music_file, :year_id, :genre_id, :target, :image)
   end
 
-  def set_item
+  def set_music
     @music = Music.find(params[:id])
   end
 
