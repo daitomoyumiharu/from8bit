@@ -15,11 +15,10 @@ class Genre < ActiveHash::Base
     { id: 13, name: 'バトルロワイヤル(battle_royale)' },
     { id: 14, name: '音ゲー(music_game)' },
     { id: 15, name: '不明(unknown)' },
-    { id: 16, name: 'オリジナル楽曲(original_music)' },
- 
+    { id: 16, name: 'オリジナル楽曲(original_music)' }
+
   ]
 
   include ActiveHash::Associations
   has_many :musics
-
-  end
+end

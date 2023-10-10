@@ -7,11 +7,10 @@ class Year < ActiveHash::Base
     { id: 5, name: '2000年代' },
     { id: 6, name: '2010年代' },
     { id: 7, name: '2020年代' },
-    { id: 8, name: '不明(unknown)' },
- 
+    { id: 8, name: '不明(unknown)' }
+
   ]
 
   include ActiveHash::Associations
   has_many :musics
-
-  end
+end

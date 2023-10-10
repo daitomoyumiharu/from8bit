@@ -24,15 +24,15 @@ class Music < ApplicationRecord
 
   def description_with_links
     # description フィールド内のURLをリンクに変換するロジックを実装
-    description.gsub(URI.regexp, '<a href="\0">\0</a>').html_safe
+    description.gsub(URI::DEFAULT_PARSER.make_regexp, '<a href="\0">\0</a>').html_safe
   end
 
   private
 
   def music_file_content_type
     acceptable_types = ['audio/mp3', 'audio/mpeg', 'audio/wav']
-    unless acceptable_types.include?(music_file.content_type)
-      errors.add(:music_file, 'はMP3またはWAVファイルである必要があります')
-    end
+    return if acceptable_types.include?(music_file.content_type)
+
+    errors.add(:music_file, 'はMP3またはWAVファイルである必要があります')
   end
 end

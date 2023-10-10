@@ -5,7 +5,7 @@ FactoryBot.define do
     year_id { Faker::Number.between(from: 1, to: 6) }
     title { Faker::Lorem.sentence }
     description { Faker::Lorem.paragraph }
-    
+
     # image属性とmusic_file属性を設定
     transient do
       image_file_path { Rails.root.join('public/images/test_image.png') }

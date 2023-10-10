@@ -1,12 +1,10 @@
 class MusicsController < ApplicationController
-  #ログアウト状態のユーザーが投稿ページへ遷移を試みると、ログインページへリダイレクトするよう設定
+  # ログアウト状態のユーザーが投稿ページへ遷移を試みると、ログインページへリダイレクトするよう設定
   before_action :authenticate_user!, except: [:index]
   before_action :set_music, only: [:show, :edit, :update]
 
-
-  
   def index
-    @musics = Music.includes(:user).order("created_at DESC")
+    @musics = Music.includes(:user).order('created_at DESC')
   end
 
   def new
@@ -19,8 +17,8 @@ class MusicsController < ApplicationController
     if @music.save
       redirect_to root_path
     else
-      puts "Validation errors:"
-      puts @music.errors.full_messages 
+      puts 'Validation errors:'
+      puts @music.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
@@ -32,10 +30,9 @@ class MusicsController < ApplicationController
 
   def edit
     # ログインしているユーザー且つ編集ページのユーザーと一致していればeditファイルが読み込まれる
-    if @music.user_id == current_user.id
-    else
-      redirect_to root_path
-    end
+    return if @music.user_id == current_user.id
+
+    redirect_to root_path
   end
 
   def update
@@ -45,7 +42,6 @@ class MusicsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-  
 
   def music_params
     params.require(:music).permit(:game_name, :title, :description, :music_file, :year_id, :genre_id, :target, :image)
@@ -54,5 +50,4 @@ class MusicsController < ApplicationController
   def set_music
     @music = Music.find(params[:id])
   end
-
 end
