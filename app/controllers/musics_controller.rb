@@ -43,6 +43,16 @@ class MusicsController < ApplicationController
     end
   end
 
+  def destroy
+    #ログイン状態のユーザーと一致している場合削除
+    if @music.user_id == current_user.id
+      @music.destroy
+      rediret_to root_path
+    else
+      redirect_to root_path
+    end
+  end
+
   def music_params
     params.require(:music).permit(:game_name, :title, :description, :music_file, :year_id, :genre_id, :target, :image)
   end
