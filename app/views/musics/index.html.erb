@@ -210,7 +210,7 @@
           <p class="text-bg-light p-3"><%= music.description_with_links %></p> <!-- description_with_links を呼び出す -->
 
           <ul class="Medium weight text.">
-            <li><strong>User:</strong> <%= link_to music.user.nickname, music_path(music.user) if music.user %></li>
+            <li><strong>User:</strong> <%= link_to music.user.nickname, music_path(music) if music.user %></li>
             <li><strong>年代（Year）:</strong> <%= music.year.name if music.year %></li>
             <li><strong>ジャンル（Genre）:</strong> <%= music.genre.name if music.genre %></li>
             <li><strong>対象（Target）:</strong> <%= music.target if music.target %></li>
@@ -235,7 +235,7 @@
           
           <!-- Music Details based on validation columns -->
           <ul class="Medium weight text.">
-            <li><strong>User:</strong> <%= link_to music.user.nickname, music_path(music.user) if music.user %></li>
+            <li><strong>User:</strong> <%= link_to music.user.nickname, music_path(music) if music.user %></li>
             <li><strong class="">年代（Year）:</strong> <%= music.year.name if music.year %></li>
             <li><strong>ジャンル（Genre）:</strong> <%= music.genre.name if music.genre %></li>
             <li><strong>対象（Target）:</strong> <%= music.target if music.target %></li>

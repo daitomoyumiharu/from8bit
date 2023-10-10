@@ -4,7 +4,7 @@ class Music < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_one_attached :music_file
-  has_many :comments
+  has_many :comments, dependent: :destroy
   belongs_to :genre
   belongs_to :year
 

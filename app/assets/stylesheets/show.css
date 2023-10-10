@@ -3,12 +3,13 @@ body {
   background-color: #f8f9fa;  /* 薄いグレーに変更 */
   color: #333;  /* テキストの色を少し暗く */
   line-height: 1.6;
+  background-image: url('live.jpg');
 }
 
 .container {
   max-width: 800px;  /* 幅を指定 */
   margin: 50px auto;  /* 上下のマージンを追加、中央寄せ */
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.7);  /* 背景色を半透明に変更 */
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  /* シャドウを少し柔らかく */
