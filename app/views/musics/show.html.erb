@@ -34,6 +34,12 @@
             <p class="text-bg-light p-3"><%= @music.description_with_links %></p> <!-- description_with_links を呼び出す -->
           </div>
 
+          <!-- ログイン状態で、自身の投稿の場合にのみ「編集」「削除」ボタンを表示 -->
+          <% if user_signed_in? && current_user == @music.user %>
+            <%= link_to '編集', edit_music_path(@music), class: 'btn btn-primary' %>
+            <%= link_to '削除', @music, method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'btn btn-danger' %>
+          <% end %>
+
           <!-- コメント欄 -->
           <div class="comments">
               <h3>コメント</h3>
