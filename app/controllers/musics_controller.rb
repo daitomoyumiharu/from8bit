@@ -1,7 +1,7 @@
 class MusicsController < ApplicationController
   # ログアウト状態のユーザーが投稿ページへ遷移を試みると、ログインページへリダイレクトするよう設定
   before_action :authenticate_user!, except: [:index]
-  before_action :set_music, only: [:show, :edit, :update]
+  before_action :set_music, only: [:show, :edit, :update, :destroy]
 
   def index
     @musics = Music.includes(:user).order('created_at DESC')
@@ -47,7 +47,7 @@ class MusicsController < ApplicationController
     #ログイン状態のユーザーと一致している場合削除
     if @music.user_id == current_user.id
       @music.destroy
-      rediret_to root_path
+      redirect_to root_path
     else
       redirect_to root_path
     end
