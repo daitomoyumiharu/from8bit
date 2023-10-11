@@ -27,7 +27,7 @@
                Not Attached
             <% end %>
         <div class="music-info">
-          <p><strong>User:</strong> <%= link_to @music.user.nickname, music_path(@music.user) if @music.user %></p>
+          <p><strong>User:</strong> <%= @music.user.nickname %></p>
           <p><strong>年代（Year）:</strong> <%= @music.year.name if @music.year %></p>
           <p><strong>ジャンル（Genre）:</strong> <%= @music.genre.name if @music.genre %></p>
           <p><strong>対象（Target）:</strong> <%= @music.target if @music.target %></p>

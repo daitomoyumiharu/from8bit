@@ -10,7 +10,7 @@
           
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to current_user.nickname, "/users/#{current_user.id}", class: "user-nickname nav-link" %>
+              <%= link_to current_user.nickname, user_path(current_user), class: "user-nickname nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout nav-link" %>
