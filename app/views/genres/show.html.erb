@@ -1,0 +1,8 @@
+<h1><%= @genre.name %></h1>
+
+<% @musics.each do |music| %>
+  <div>
+    <h2><%= music.game_name %> - <%= music.title %></h2>
+    <%= link_to "詳細", music_path(music) %>
+  </div>
+<% end %>
