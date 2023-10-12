@@ -182,7 +182,7 @@
         <%= image_tag("game_shop.png", class:"img-thumbnail") %>
         <h2 class="fw-normal">ジャンル別ゲーム音楽</h2>
         <p>アクションやRPGなどジャンル毎で探したい方はこちらから検索できます。</p>
-        <p><a class="btn btn-outline-info" href="#">listen to music &raquo;</a></p>
+         <p><%= link_to 'listen to music &raquo;'.html_safe, genres_path, class: 'btn btn-outline-info' %> </p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
         <%= image_tag("geisha.png", class:"img-thumbnail") %>

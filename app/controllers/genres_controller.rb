@@ -1,6 +1,7 @@
 class GenresController < ApplicationController
   def index
-    @genres = Genre.all
+    @genres = Genre.all.reject { |genre| genre.id == 1 && 16 }
+    @musics = Music.all
   end
 
   def show
