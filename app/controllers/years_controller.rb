@@ -1,6 +1,6 @@
 class YearsController < ApplicationController
   def index
-    @years = Year.all
+    @years = Year.all.reject { |year| year.id == 1 }
   end
 
   def show
