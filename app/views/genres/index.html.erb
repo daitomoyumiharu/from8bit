@@ -1,0 +1,27 @@
+<%= stylesheet_link_tag 'genres_index' %>
+<%= render "shared/header" %>
+<%= render "shared/second_header" %>
+
+<div class="container mt-5">
+  <h1 class="text-center mb-4">ジャンル一覧</h1>
+  <div class="row justify-content-center">
+    <% @genres.each do |genre| %>
+      <% next if genre.id == 16 %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+          <%= link_to genre_path(genre.id) do%>
+            <%= image_tag genre.image_url, class: "card-img-top", alt: genre.name, style: "width: 100%; height: 300px; object-fit: cover;" if genre.image_url.present? %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title text-center"><%= genre.name %></h5>
+          </div>
+          <div class="card-footer">
+            <%= link_to '詳細', genre_path(genre.id), class: 'btn btn-primary btn-block' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

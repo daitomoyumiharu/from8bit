@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :musics do
     resources :comments, only: :create
   end
+
+  resources :genres, only: [:index, :show]
 end
