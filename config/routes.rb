@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :genres, only: [:index, :show]
+
+  resources :years, only: [:index, :show]
 end
