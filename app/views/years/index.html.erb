@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <% @years.each do |year| %>
+      <div class="col-md-3">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= year.name %></h5>
+            <%= link_to '詳細', year_path(year.id), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
