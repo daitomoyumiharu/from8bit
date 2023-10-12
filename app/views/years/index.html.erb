@@ -1,14 +1,27 @@
-<div class="container">
-  <div class="row">
+<%= stylesheet_link_tag 'years_index' %>
+<%= render "shared/header" %>
+<%= render "shared/second_header" %>
+
+<div class="container mt-5">
+  <h1 class="text-center mb-4">年代一覧</h1>
+  <div class="row justify-content-center">
     <% @years.each do |year| %>
-      <div class="col-md-3">
-        <div class="card mb-4">
+      <% next if year.id == 1 %> <!-- id 1の年代をスキップ -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+          <%= link_to year_path(year.id) do %>
+            <%= image_tag year.image_url, class: "card-img-top", alt: year.name, style: "width: 100%; height: 300px; object-fit: cover;" if year.image_url.present? %>
+          <% end %>
           <div class="card-body">
-            <h5 class="card-title"><%= year.name %></h5>
-            <%= link_to '詳細', year_path(year.id), class: 'btn btn-primary' %>
+            <h5 class="card-title text-center"><%= year.name %></h5>
+          </div>
+          <div class="card-footer">
+            <%= link_to '詳細', year_path(year.id), class: 'btn btn-primary btn-block' %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+<%= render "shared/footer" %>
