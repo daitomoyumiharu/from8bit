@@ -6,7 +6,7 @@ class GenresController < ApplicationController
 
   def show
     @genre = Genre.find(params[:id])
-    @musics = Music.where(genre_id: @genre.id)
+    @musics = @genre.musics
   end
 
 end
