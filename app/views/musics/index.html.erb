@@ -176,7 +176,7 @@
         <%= image_tag("game1980.jpg", class:"img-thumbnail") %>
         <h2 class="fw-normal">年代別ゲーム音楽</h2>
         <p>1980年代〜2020年代までの音楽を年代毎に検索できます。懐かしい音楽や最新のゲーム音楽を探してみましょう。</p>
-        <p><a class="btn btn-outline-danger" href="#">listen to music &raquo;</a></p>
+        <p><%= link_to 'listen to music &raquo;'.html_safe, years_path, class: 'btn btn-outline-danger' %></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
         <%= image_tag("game_shop.png", class:"img-thumbnail") %>
