@@ -54,8 +54,8 @@ class MusicsController < ApplicationController
   end
 
   def originals
-    original_genre = Genre.find_by(name: 'オリジナル楽曲')
-    @original_music = original_genre.musics
+    original_genre = Genre.find_by(name: 'オリジナル楽曲(original_music)')
+    @original_musics = original_genre.musics
   end
 
   def music_params

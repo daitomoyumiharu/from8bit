@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :musics do
     #originalsアクションへのルートを追加
     collection do
-      get 'originals', to 'musics#originals' 
+      get 'originals', to: 'musics#originals' 
     end
     resources :comments, only: :create
   end
@@ -15,5 +15,4 @@ Rails.application.routes.draw do
 
   resources :years, only: [:index, :show]
 
-  resources :original_music, only: :index
 end

@@ -188,7 +188,7 @@
         <%= image_tag("geisha.png", class:"img-thumbnail") %>
         <h2 class="fw-normal" >オリジナル楽曲</h2>
         <p>皆さんが投稿した、〇〇風音楽やお気に入りのゲームへ向けたオリジナル楽曲を見つけてみましょう。</p>
-        <p><a class="btn btn-outline-secondary" href="#">listen to music &raquo;</a></p>
+        <p><%= link_to 'listen to music &raquo;'.html_safe, originals_musics_path, class: 'btn btn-outline-secondary'%></p>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
