@@ -4,10 +4,15 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :musics do
+    #originalsアクションへのルートを追加
+    collection do
+      get 'originals', to: 'musics#originals' 
+    end
     resources :comments, only: :create
   end
 
   resources :genres, only: [:index, :show]
 
   resources :years, only: [:index, :show]
+
 end

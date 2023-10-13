@@ -53,6 +53,11 @@ class MusicsController < ApplicationController
     end
   end
 
+  def originals
+    original_genre = Genre.find_by(name: 'オリジナル楽曲(original_music)')
+    @original_musics = original_genre.musics
+  end
+
   def music_params
     params.require(:music).permit(:game_name, :title, :description, :music_file, :year_id, :genre_id, :target, :image)
   end
