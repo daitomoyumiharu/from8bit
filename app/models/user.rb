@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :following
 
   def followed_by?(user)
-    follower = passive_relationships.find__by(following_id: user.id)
+    follower = passive_relationships.find_by(following_id: user.id)
     return follower.present?
   end
 

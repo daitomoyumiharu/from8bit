@@ -34,3 +34,58 @@ h1, h2, h3 {
 .btn:hover {
   background-color: #444; /* ホバー時のさらに深いグレー */
 }
+
+.user-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+
+.user-contents {
+  display: flex;
+  align-items: center;
+}
+
+.user-flex-container {
+  display: flex;
+  align-items: center; /* 子要素が縦方向に中央揃え */
+  justify-content: space-between; /* ニックネームとフォローボタンの間にスペースを最大限取る */
+}
+
+.user-name {
+  font-size: 24px;
+  margin-right: 10px; /* ニックネームとフォローボタンの間に少しスペース */
+}
+
+.follow-button {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  border: 1px solid #1da1f2;
+  border-radius: 20px;
+  background-color: #1da1f2;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.follow-button:hover {
+  background-color: #0c83d1;
+}
+
+.follow-button.followed {
+  background-color: #ffffff;
+  color: #1da1f2;
+}
+
+.nickname-label {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #f5f5f5;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
