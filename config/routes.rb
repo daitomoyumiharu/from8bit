@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       get 'originals', to: 'musics#originals' 
     end
     resources :comments, only: :create
+    #音楽投稿内容が存在しないとルートが発生しない為、musicsにネスト
+    resources :likes, only: [:create, :destroy]
   end
 
   resources :genres, only: [:index, :show]
