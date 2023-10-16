@@ -7,6 +7,7 @@ class Music < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :genre
   belongs_to :year
+  has_many :likes
 
   validates :user, presence: { message: 'ユーザーを選択してください' }
   validates :image, presence: { message: '画像を選択してください' }
