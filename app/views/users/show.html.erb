@@ -4,7 +4,23 @@
 
 
 <div class="container">
-    <h1 class="text-center mb-5">マイページ（Mypage）: <%= @user.nickname %></h1>
+  <h1 class="text-center mb-5">マイページ（Mypage）: <%= @user.nickname %></h1>
+  
+  <div class="follow-grid">
+    <div class="follow-section">
+      <h3>フォロー</h3>
+      <% @user.followings.each do |user| %>
+        <p class="f-user"><%= link_to user.nickname, user_path(user.id), class: "user-link" %></p>
+      <% end %>
+    </div>
+
+    <div class="follow-section">
+    <h3>フォロワー</h3>
+      <% @user.followers.each do |user| %>
+        <p class="f-user"><%= link_to user.nickname, user_path(user.id), class: "user-link" %></p>
+      <% end %>
+    </div>
+  </div>
 
   <% @musics.each_with_index do |music, index| %>
     <div class="row featurette mb-5">
