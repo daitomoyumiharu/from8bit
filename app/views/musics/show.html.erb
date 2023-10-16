@@ -30,9 +30,9 @@
           <p><strong>User:</strong> <%= @music.user.nickname %>
             <% unless @music.user == current_user %>
               <% if @music.user.followed_by?(current_user) %>
-                <%= link_to "フォロー中", user_relationships_path(@music.user.id), class: "follow-button followed", data: { turbo_method: :delete } %>
+                <%= button_to "フォロー中", user_relationship_path(@music.user.id), method: :delete, class: "follow-button followed", data: { turbo: false } %>
               <% else %>
-                <%= link_to "フォローする", user_relationships_path(@music.user.id), class: "follow-button", data: { turbo_method: :post } %>
+                <%= button_to "フォローする", user_relationships_path(@music.user.id), class: "follow-button", method: :post, data: { turbo: false } %>
               <% end %>
             <% end %>
           </p>
