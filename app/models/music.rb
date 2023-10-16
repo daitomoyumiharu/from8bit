@@ -28,6 +28,11 @@ class Music < ApplicationRecord
     description.gsub(URI::DEFAULT_PARSER.make_regexp, '<a href="\0">\0</a>').html_safe
   end
 
+  #いいね済みか否か判定
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
+
   private
 
   def music_file_content_type
