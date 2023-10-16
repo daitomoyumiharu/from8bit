@@ -4,18 +4,7 @@
 
 
 <div class="container">
-  <div class="user-page mt-4 mb-4">
-    <div class="user-contents user-flex-container">
-      <span class="nickname-label"><%= @user.nickname %></span>
-      <% if @user.followed_by?(current_user) %>
-        <%= link_to "フォロー中", user_relationships_path(@user.id), class: "follow-button followed", data: { turbo_method: :delete } %>
-      <% else %>
-        <%= link_to "フォローする", user_relationships_path(@user.id), class: "follow-button", data: { turbo_method: :post } %>
-      <% end %>
-    </div>
-  </div>
-
-  <h1 class="text-center mb-5">マイページ（Mypage）: <%= @user.nickname %></h1>
+    <h1 class="text-center mb-5">マイページ（Mypage）: <%= @user.nickname %></h1>
 
   <% @musics.each_with_index do |music, index| %>
     <div class="row featurette mb-5">

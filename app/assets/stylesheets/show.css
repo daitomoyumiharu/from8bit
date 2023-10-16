@@ -111,3 +111,38 @@ form input[type="submit"]:hover {
   border-radius: 6px;  /* コメントの角を丸く */
   border: 1px solid #e0e0e0;  /* コメントの境界線 */
 }
+
+.follow-button {
+  padding: 8px 20px;
+  font-weight: 600;
+  color: white;
+  background-color: #1DA1F2;
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+  display: inline-block;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+}
+
+.follow-button:hover {
+  background-color: #0c83d1;
+  transform: translateY(-2px);
+}
+
+.follow-button:active {
+  transform: translateY(1px);
+}
+
+.follow-button.followed {
+  background-color: white;
+  color: #1DA1F2;
+  border: 2px solid #1DA1F2;
+}
+
+.follow-button.followed:hover {
+  background-color: #e8f5fe;
+}

@@ -27,7 +27,15 @@
                Not Attached
             <% end %>
         <div class="music-info">
-          <p><strong>User:</strong> <%= @music.user.nickname %></p>
+          <p><strong>User:</strong> <%= @music.user.nickname %>
+            <% unless @music.user == current_user %>
+              <% if @music.user.followed_by?(current_user) %>
+                <%= link_to "フォロー中", user_relationships_path(@music.user.id), class: "follow-button followed", data: { turbo_method: :delete } %>
+              <% else %>
+                <%= link_to "フォローする", user_relationships_path(@music.user.id), class: "follow-button", data: { turbo_method: :post } %>
+              <% end %>
+            <% end %>
+          </p>
           <p><strong>年代（Year）:</strong> <%= @music.year.name if @music.year %></p>
           <p><strong>ジャンル（Genre）:</strong> <%= @music.genre.name if @music.genre %></p>
           <p><strong>対象（Target）:</strong> <%= @music.target if @music.target %></p>
