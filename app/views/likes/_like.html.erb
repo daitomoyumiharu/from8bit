@@ -1,8 +1,8 @@
-    <!-- いいねボタン -->
-    <div id="like-btn<%= @music.id %>">
-      <% if user_signed_in? && @music.liked_by?(current_user) %>
-        <%= link_to "いいね済", music_likes_path(@music.id), data: { turbo_method: :delete }, class: "music_likes"  %>
-      <% else %>
-        <%= link_to "いいねする", music_likes_path(@music.id), data: { turbo_method: :post }, class: "music_likes" %>
-      <% end %>
-    </div>
+<!-- いいねボタン -->
+<div id="like-btn<%= @music.id %>">
+  <% if user_signed_in? && @music.liked_by?(current_user) %>
+    <%= link_to "いいね済", music_like_path(@music.id), data: { turbo_method: :delete }, class: "music_likes", remote: true  %>
+  <% else %>
+    <%= link_to "いいねする", music_likes_path(@music.id), data: { turbo_method: :post }, class: "music_likes", remote: true %>
+  <% end %>
+</div>
