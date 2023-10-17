@@ -39,15 +39,8 @@
     <div class="music-description">
       <p class="text-bg-light p-3"><%= @music.description_with_links %></p> <!-- description_with_links を呼び出す -->
     </div>
-
-    <!-- いいねボタン -->
-    <div id="like-btn<%= @music.id %>">
-      <% if user_signed_in? && @music.liked_by?(current_user) %>
-        <%= link_to "いいね済", music_likes_path(@music.id), data: { turbo_method: :delete }, class: "music_likes"  %>
-      <% else %>
-        <%= link_to "いいねする", music_likes_path(@music.id), data: { turbo_method: :post }, class: "music_likes" %>
-      <% end %>
-    </div>
+    
+    <%= render partial: "likes/like", locals: { music: @music } %>
 
     <!-- ログイン状態で、自身の投稿の場合にのみ「編集」「削除」ボタンを表示 -->
     <% if user_signed_in? && current_user == @music.user %>
