@@ -7,6 +7,7 @@ class Music < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :genre
   belongs_to :year
+  has_many :likes
 
   validates :user, presence: { message: 'ユーザーを選択してください' }
   validates :image, presence: { message: '画像を選択してください' }
@@ -25,6 +26,11 @@ class Music < ApplicationRecord
   def description_with_links
     # description フィールド内のURLをリンクに変換するロジックを実装
     description.gsub(URI::DEFAULT_PARSER.make_regexp, '<a href="\0">\0</a>').html_safe
+  end
+
+  #いいね済みか否か判定
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
   end
 
   private
