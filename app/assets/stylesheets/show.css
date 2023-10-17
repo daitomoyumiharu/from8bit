@@ -146,3 +146,36 @@ form input[type="submit"]:hover {
 .follow-button.followed:hover {
   background-color: #e8f5fe;
 }
+
+/* いいねボタンスタイル */
+.like-button {
+  margin-bottom: 20px;
+  display: inline-block;
+  padding: 8px 20px;
+  font-weight: 600;
+  color: white;
+  background-color: #ff4500; /* いいねボタンの背景色（オレンジ色） */
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none; /* リンクの下線を削除 */
+}
+
+.like-button:hover {
+  background-color: #ff6347; /* ホバー時の背景色を少し明るく */
+  transform: translateY(-2px);
+}
+
+.like-button:active {
+  transform: translateY(1px);
+}
+
+.like-button.liked {
+  background-color: #1DA1F2; /* いいね済みの場合の背景色（青色） */
+  color: white;
+}
