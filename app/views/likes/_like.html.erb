@@ -1,8 +1,9 @@
 <!-- いいねボタン -->
-<div id="like-btn<%= @music.id %>">
+<%= turbo_frame_tag dom_id(music, :like) do %>
   <% if user_signed_in? && @music.liked_by?(current_user) %>
-    <%= link_to "いいね済♪", music_like_path(@music.id), data: { turbo_method: :delete }, class: "like-button liked", remote: true  %>
+    <% like = current_user.likes.find_by(music_id: music.id) %>
+    <%= link_to "いいね済♪", music_like_path(music_id: @music.id, id: like.id), data: { turbo_method: :delete }, class: "like-button liked" %>
   <% else %>
-    <%= link_to "いいね♪", music_likes_path(@music.id), data: { turbo_method: :post }, class: "like-button", remote: true %>
+    <%= link_to "いいね♪", music_likes_path(@music.id), data: { turbo_method: :post }, class: "like-button"%>
   <% end %>
-</div>
+ <% end %>
