@@ -13,6 +13,6 @@ class UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:user_id])
-    @liked_musics = @user.liked_musics
+    @liked_musics = @user.liked_music
   end
 end

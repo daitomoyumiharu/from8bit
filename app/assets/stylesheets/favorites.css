@@ -1,0 +1,54 @@
+/* 基本的なスタイリング */
+body {
+  background-color: #f8f9fa; /* ソフトな背景色 */
+  color: #505050; /* 読みやすいテキスト色 */
+  background-image: url('miyako.jpg');
+}
+
+/* タイトルのスタイリング */
+h1.display-4 {
+  color:white;
+  font-weight: bold;
+  padding-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* リストアイテムのスタイリング */
+.list-unstyled li {
+  font-size: 18px; /* サイズを大きくして読みやすく */
+  color: white;
+}
+
+/* ボタンのスタイリング */
+.btn-outline-primary {
+  color: white; /* ボタンのテキストもピンク色に */
+  border-color: #ff4081;
+}
+
+.btn-outline-primary:hover {
+  background-color: #ff4081;
+  color: white;
+}
+
+/* 画像のスタイリング */
+.img-thumbnail {
+  border: none; /* 枠線をなくす */
+  border-radius: 50%; /* 画像を円形に */
+  box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.1); /* 少し影をつける */
+}
+
+/* 音楽ファイルが添付されていない場合のテキストスタイリング */
+.not-attached {
+  color: #999; /* グレーのテキスト */
+  font-style: italic; /* 斜体で表示 */
+}
+
+/* 区切り線のスタイリング */
+.featurette-divider {
+  border-top: 2px solid #ff4081; /* ピンク色の線に */
+}
+
+h2.display-5 {
+  color: white; /* テキストの色を白に変更 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 白いテキストの可読性を高めるためのテキストシャドウ */
+}
