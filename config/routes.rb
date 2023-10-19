@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to:"musics#index"
   resources :users, only: [:show] do
     resources :relationships, only: [:create, :destroy]
+    # お気に入りの音楽一覧ページへのルート
+    get 'favorites', to: 'users#favorites'
   end
 
   resources :musics do

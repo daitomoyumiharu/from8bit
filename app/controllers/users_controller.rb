@@ -10,4 +10,9 @@ class UsersController < ApplicationController
     end
     @musics = @user.musics.order(created_at: :desc)
   end
+
+  def favorites
+    @user = User.find(params[:user_id])
+    @liked_musics = @user.liked_music
+  end
 end

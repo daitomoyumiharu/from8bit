@@ -31,7 +31,14 @@
       <svg class="bd-placeholder-img" width="100%" height="50" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
       <div class="container">
         <div class="carousel-caption">
-          <p><a class="btn btn-outline-light" href="#">お気に入りの音楽<br>[Favorite music]</a></p>
+          <!-- お気に入りの音楽一覧ページへのリンク -->
+          <% if current_user %>
+            <p><%= link_to "お気に入りの音楽<br>[Favorite music]".html_safe, user_favorites_path(current_user), class: 'btn btn-outline-light' %></p>
+          <% else %>
+            <p>アカウントを作成して、お気に入りの音楽を保存しましょう！<br>
+            <%= link_to "サインアップ<br>[Sign Up]".html_safe, new_user_registration_path, class: 'btn btn-outline-light' %></p>
+          <% end %>
+        </div>
         </div>
         <%= image_tag("iine_banner.jpg", class:"img-thumbnail") %>
       </div>
