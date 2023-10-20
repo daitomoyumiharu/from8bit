@@ -28,30 +28,30 @@ class Music < ApplicationRecord
     description.gsub(URI::DEFAULT_PARSER.make_regexp, '<a href="\0">\0</a>').html_safe
   end
 
-  #いいね済みか否か判定
+  # いいね済みか否か判定
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
 
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     # 検索を許可する属性のリスト
-    %w[title description  game_name]
+    %w[title description game_name]
   end
 
   # 検索可能な関連付けを定義する
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(_auth_object = nil)
     # 検索可能な関連付けの名前を記述
-    %w[comments user] 
+    %w[comments user]
   end
 
   # カスタムのransackスコープを追加
-  def self.ransackable_scopes(auth_object = nil)
+  def self.ransackable_scopes(_auth_object = nil)
     [:search__id_as_text]
   end
 
   # idをテキストとして検索するためのスコープ
   def self.search__id_as_text(query)
-    where("cast(year_id as text) LIKE :query OR cast(genre_id as text) LIKE :query", query: "%#{query}%")
+    where('cast(year_id as text) LIKE :query OR cast(genre_id as text) LIKE :query', query: "%#{query}%")
   end
 
   private

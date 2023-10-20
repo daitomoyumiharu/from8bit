@@ -8,5 +8,4 @@ class GenresController < ApplicationController
     @genre = Genre.find(params[:id])
     @musics = @genre.musics
   end
-
 end

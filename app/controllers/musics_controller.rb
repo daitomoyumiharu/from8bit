@@ -4,13 +4,13 @@ class MusicsController < ApplicationController
   before_action :set_music, only: [:show, :edit, :update, :destroy]
 
   def index
-    #検索オブジェクトの作成（検索を試みた場合先に実行される）
-    @search = Music.ransack(params[:q]) 
+    # 検索オブジェクトの作成（検索を試みた場合先に実行される）
+    @search = Music.ransack(params[:q])
     @musics = if params[:q].present?
-      @search.result(distinct: true).includes(:user).order('created_at DESC')
-    else
-      Music.includes(:user).order('created_at DESC')
-    end
+                @search.result(distinct: true).includes(:user).order('created_at DESC')
+              else
+                Music.includes(:user).order('created_at DESC')
+              end
   end
 
   def new
@@ -50,13 +50,9 @@ class MusicsController < ApplicationController
   end
 
   def destroy
-    #ログイン状態のユーザーと一致している場合削除
-    if @music.user_id == current_user.id
-      @music.destroy
-      redirect_to root_path
-    else
-      redirect_to root_path
-    end
+    # ログイン状態のユーザーと一致している場合削除
+    @music.destroy if @music.user_id == current_user.id
+    redirect_to root_path
   end
 
   def originals
