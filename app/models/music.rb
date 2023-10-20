@@ -49,7 +49,7 @@ class Music < ApplicationRecord
     [:search__id_as_text]
   end
 
-  # year_idをテキストとして検索するためのスコープ
+  # idをテキストとして検索するためのスコープ
   def self.search__id_as_text(query)
     where("cast(year_id as text) LIKE :query OR cast(genre_id as text) LIKE :query", query: "%#{query}%")
   end
