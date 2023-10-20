@@ -35,13 +35,13 @@ class Music < ApplicationRecord
 
   def self.ransackable_attributes(auth_object = nil)
     # 検索を許可する属性のリスト
-    %w[title description year_id genre_id game_name]
+    %w[title description  game_name]
   end
 
   # 検索可能な関連付けを定義する
   def self.ransackable_associations(auth_object = nil)
     # 検索可能な関連付けの名前を記述
-    %w[comments genre year user] 
+    %w[comments user] 
   end
 
   # カスタムのransackスコープを追加
