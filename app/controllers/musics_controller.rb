@@ -4,13 +4,15 @@ class MusicsController < ApplicationController
   before_action :set_music, only: [:show, :edit, :update, :destroy]
 
   def index
-    #検索オブジェクトの作成
-    @search = Music.ransack(params[:q]) 
-    #検索パラメータがない場合（通常のページロード時）は、全てのMusicレコードを取得して@musicsにセット
-    @musics = if params[:q].present?
-      @search.result(distinct: true).includes(:user).order('created_at DESC')
+    @search = Music.ransack(params[:q])
+
+    # もしyear_id_queryパラメータが存在するなら、パラメータでカスタムスコープを適用
+    if params[:year_id_query].present?
+      @musics = @search.result(distinct: true).search_id_as_text(params[:id_query]).includes(:user).order('created_at DESC')
+    elsif params[:q].present?
+      @musics = @search.result(distinct: true).includes(:user).order('created_at DESC')
     else
-      Music.includes(:user).order('created_at DESC')
+      @musics = Music.includes(:user).order('created_at DESC')
     end
   end
 

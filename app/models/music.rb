@@ -44,6 +44,16 @@ class Music < ApplicationRecord
     %w[comments genre year user] 
   end
 
+  # カスタムのransackスコープを追加
+  def self.ransackable_scopes(auth_object = nil)
+    [:search__id_as_text]
+  end
+
+  # year_idをテキストとして検索するためのスコープ
+  def self.search__id_as_text(query)
+    where("cast(year_id as text) LIKE :query OR cast(genre_id as text) LIKE :query", query: "%#{query}%")
+  end
+
   private
 
   def music_file_content_type
