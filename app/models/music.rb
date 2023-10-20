@@ -33,6 +33,17 @@ class Music < ApplicationRecord
     likes.where(user_id: user.id).exists?
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    # 検索を許可する属性のリスト
+    %w[title description year_id genre_id]
+  end
+
+  # 検索可能な関連付けを定義する
+  def self.ransackable_associations(auth_object = nil)
+    # 検索可能な関連付けの名前を記述
+    %w[comments genre year user] 
+  end
+
   private
 
   def music_file_content_type
