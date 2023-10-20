@@ -24,10 +24,10 @@
             </li>
           <% end %>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <%= search_form_for @search, url: musics_path, html: { method: :get, class: "d-flex" } do |f| %>
+          <%= f.search_field :title_or_description_or_year_id_or_genre_id_or_game_name_cont, placeholder: "Search", aria: { label: "Search" }, class: "form-control me-2" %>
+          <%= f.submit "Search", class: "btn btn-outline-success" %>
+        <% end %>
       </div>
     </div>
   </nav>
