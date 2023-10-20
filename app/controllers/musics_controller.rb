@@ -4,7 +4,8 @@ class MusicsController < ApplicationController
   before_action :set_music, only: [:show, :edit, :update, :destroy]
 
   def index
-    @search = Music.ransack(params[:q]) #検索オブジェクトの作成
+    #検索オブジェクトの作成（検索を試みた場合先に実行される）
+    @search = Music.ransack(params[:q]) 
     @musics = if params[:q].present?
       @search.result(distinct: true).includes(:user).order('created_at DESC')
     else
